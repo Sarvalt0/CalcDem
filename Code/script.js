@@ -57,3 +57,4 @@ function clearDisplay() {
 function updateDisplay() {
     document.getElementById('display').value = currentInput;
 }
+
