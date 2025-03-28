@@ -32,7 +32,12 @@ function calculate() {
             result = prev * current;
             break;
         case '/':
-            result = current !== 0 ? prev / current : 'Błąd';
+            if (current === 0) {
+                document.getElementById('display').value = "Nie dziel przez 0!";
+                return;
+            } else {
+                result = prev / current;
+            }
             break;
     }
 
