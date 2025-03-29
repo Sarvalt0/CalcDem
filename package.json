@@ -2,7 +2,7 @@
   "name": "CalculatorProject",
   "version": "1.0.0",
   "description": "",
-  "main": "Code/calculator.js",
+  "main": "src/calculator.js",
   "scripts": {
     "test": "jest"
   },
