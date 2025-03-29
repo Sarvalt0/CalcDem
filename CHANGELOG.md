@@ -49,3 +49,20 @@ Wszystkie istotne zmiany w tym projekcie będą dokumentowane w tym pliku.
 
 ### Uwaga
 - Stylizacja inspirowana estetyką retro-futurystyczną i interfejsem typu HUD/terminal
+
+## [1.3.0] - 2025-03-29
+
+### Dodane
+- Ukryta funkcja aktywowana sekwencją `666` + `C`
+- Pojawiający się napis „Witaj” z animacją zoom-out jakby kamera się oddalała
+- Terminalowy czat z efektem wyłaniania z mgły
+- Styl messengerowy do wpisywania wiadomości
+- Pełna responsywność na urządzeniach mobilnych (fonty, przyciski, layout)
+
+### Poprawki
+- Usunięcie kursora tekstowego z napisu „Witaj”
+- Wygładzenie animacji powiększenia bez efektu przycięcia
+- Skalowalny font „Witaj” przy użyciu `clamp()`
+
+### Styl
+- Motyw cyberpunkowy: Orbitron, neonowe cienie, ciemne tło

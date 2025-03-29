@@ -34,5 +34,13 @@ Nowoczesna przeglądarka (ES6 Modules)
 
 Brak zależności zewnętrznych
 
+## 🔒 Tryb ukryty
+
+Projekt zawiera ukrytą funkcję aktywowaną po wpisaniu określonej sekwencji.
+
+🧪 Podpowiedź: wpisz `666` i naciśnij `C` na kalkulatorze...
+
+
 ## 📜 Licencja
 MIT
+
