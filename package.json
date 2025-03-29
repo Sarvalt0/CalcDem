@@ -1,10 +1,24 @@
 {
-  "name": "${PROJECT_NAME}",
+  "name": "CalculatorProject",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "Code/calculator.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
-  "private": true
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sarvalt0/CalcDem.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sarvalt0/CalcDem/issues"
+  },
+  "homepage": "https://github.com/Sarvalt0/CalcDem#readme",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
 }
