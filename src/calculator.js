@@ -1,7 +1,7 @@
-// calculator.js
 export let currentInput = '';
 export let operator = '';
 export let previousInput = '';
+
 
 export function appendNumber(number) {
     currentInput += number;
@@ -53,3 +53,10 @@ export function clear() {
 export function getCurrentInput() {
     return currentInput;
 }
+
+
+
+export function backspace() {
+    currentInput = currentInput.slice(0, -1);
+}
+
