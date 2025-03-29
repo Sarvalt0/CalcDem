@@ -1,20 +1,19 @@
-// calculator.js
-export let currentInput = '';
-export let operator = '';
-export let previousInput = '';
+let currentInput = '';
+let operator = '';
+let previousInput = '';
 
-export function appendNumber(number) {
+function appendNumber(number) {
     currentInput += number;
 }
 
-export function setOperation(op) {
+function setOperation(op) {
     if (currentInput === '') return;
     operator = op;
     previousInput = currentInput;
     currentInput = '';
 }
 
-export function calculate() {
+function calculate() {
     let result = 0;
     const prev = parseFloat(previousInput);
     const current = parseFloat(currentInput);
@@ -44,12 +43,23 @@ export function calculate() {
     previousInput = '';
 }
 
-export function clear() {
+function clear() {
     currentInput = '';
     previousInput = '';
     operator = '';
 }
 
-export function getCurrentInput() {
+function getCurrentInput() {
     return currentInput;
 }
+
+module.exports = {
+    appendNumber,
+    setOperation,
+    calculate,
+    clear,
+    getCurrentInput,
+    currentInput,
+    operator,
+    previousInput
+};

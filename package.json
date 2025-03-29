@@ -20,5 +20,10 @@
   "homepage": "https://github.com/Sarvalt0/CalcDem#readme",
   "devDependencies": {
     "jest": "^29.7.0"
+  },
+  "jest": {
+    "testEnvironment": "node"
   }
+
+
 }
