@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "jest",
-    "deploy": "xcopy src docs /E /Y /I"
+    "deploy": "xcopy src\\* docs\\ /E /Y /I"
   },
   "private": true,
   "repository": {
