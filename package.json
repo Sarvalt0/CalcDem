@@ -5,7 +5,8 @@
   "main": "src/calculator.js",
   "type": "module",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "deploy": "xcopy src docs /E /Y /I"
   },
   "private": true,
   "repository": {
