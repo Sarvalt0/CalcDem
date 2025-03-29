@@ -5,8 +5,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 100%;
     margin: 0;
+    padding: 0;
 }
 
 .calculator {
@@ -214,9 +215,14 @@ button:active {
 }
 @media (max-width: 768px) {
     .calculator {
-        width: 95%;
-        max-width: 100%;
-        padding: 15px;
+        width: 100vw;
+        min-height: 100vh;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 15px;
+        box-sizing: border-box;
     }
 
     #display {
@@ -249,6 +255,7 @@ button:active {
     }
 
     #welcome {
+        text-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000;
         font-size: clamp(1.8rem, 5vw, 2.8rem);
     }
 }
