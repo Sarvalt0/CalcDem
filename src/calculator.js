@@ -1,19 +1,20 @@
-let currentInput = '';
-let operator = '';
-let previousInput = '';
+export let currentInput = '';
+export let operator = '';
+export let previousInput = '';
 
-function appendNumber(number) {
+
+export function appendNumber(number) {
     currentInput += number;
 }
 
-function setOperation(op) {
+export function setOperation(op) {
     if (currentInput === '') return;
     operator = op;
     previousInput = currentInput;
     currentInput = '';
 }
 
-function calculate() {
+export function calculate() {
     let result = 0;
     const prev = parseFloat(previousInput);
     const current = parseFloat(currentInput);
@@ -43,23 +44,19 @@ function calculate() {
     previousInput = '';
 }
 
-function clear() {
+export function clear() {
     currentInput = '';
     previousInput = '';
     operator = '';
 }
 
-function getCurrentInput() {
+export function getCurrentInput() {
     return currentInput;
 }
 
-module.exports = {
-    appendNumber,
-    setOperation,
-    calculate,
-    clear,
-    getCurrentInput,
-    currentInput,
-    operator,
-    previousInput
-};
+
+
+export function backspace() {
+    currentInput = currentInput.slice(0, -1);
+}
+

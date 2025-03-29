@@ -4,6 +4,7 @@ import {
     setOperation,
     calculate,
     clear,
+    backspace,
     getCurrentInput
 } from './calculator.js';
 
@@ -37,5 +38,10 @@ document.getElementById('equals').addEventListener('click', () => {
 
 document.getElementById('clear').addEventListener('click', () => {
     clear();
+    updateDisplay();
+});
+
+document.getElementById('backspace').addEventListener('click', () => {
+    backspace();
     updateDisplay();
 });

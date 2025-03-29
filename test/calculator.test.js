@@ -1,10 +1,12 @@
-const {
+import {
     appendNumber,
     setOperation,
     calculate,
     clear,
+    backspace,
     getCurrentInput
-} = require('../src/calculator');
+} from '../src/calculator.js';
+
 
 describe('Kalkulator - podstawowe operacje', () => {
     beforeEach(() => {
@@ -84,5 +86,25 @@ describe('Kalkulator - podstawowe operacje', () => {
 
         expect(getCurrentInput()).toBe('42');
     });
+
+    test('backspace() usuwa ostatnią cyfrę z currentInput', () => {
+        clear();
+        appendNumber('1');
+        appendNumber('2');
+        appendNumber('3');
+        backspace();
+
+        expect(getCurrentInput()).toBe('12');
+
+        backspace();
+        expect(getCurrentInput()).toBe('1');
+
+        backspace();
+        expect(getCurrentInput()).toBe('');
+
+        backspace(); // próba usunięcia z pustego
+        expect(getCurrentInput()).toBe('');
+    });
+
 
 });
