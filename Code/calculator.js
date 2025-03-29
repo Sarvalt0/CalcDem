@@ -1,20 +1,20 @@
-let currentInput = '';
-let operator = '';
-let previousInput = '';
+// calculator.js
+export let currentInput = '';
+export let operator = '';
+export let previousInput = '';
 
-function appendNumber(number) {
+export function appendNumber(number) {
     currentInput += number;
-    updateDisplay();
 }
 
-function setOperation(op) {
+export function setOperation(op) {
     if (currentInput === '') return;
     operator = op;
     previousInput = currentInput;
     currentInput = '';
 }
 
-function calculate() {
+export function calculate() {
     let result = 0;
     const prev = parseFloat(previousInput);
     const current = parseFloat(currentInput);
@@ -33,28 +33,23 @@ function calculate() {
             break;
         case '/':
             if (current === 0) {
-                document.getElementById('display').value = "Nie dziel przez 0!";
-                return;
-            } else {
-                result = prev / current;
+                throw new Error("Nie dziel przez 0!");
             }
+            result = prev / current;
             break;
     }
 
     currentInput = result.toString();
     operator = '';
     previousInput = '';
-    updateDisplay();
 }
 
-function clearDisplay() {
+export function clear() {
     currentInput = '';
     previousInput = '';
     operator = '';
-    updateDisplay();
 }
 
-function updateDisplay() {
-    document.getElementById('display').value = currentInput;
+export function getCurrentInput() {
+    return currentInput;
 }
-
