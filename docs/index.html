@@ -9,11 +9,12 @@
 </head>
 <body>
 <div class="wrapper">
-<div class="calculator">
+    <div class="layout">
+    <div class="calculator">
     <label for="display"></label>
     <input type="text" id="display" disabled>
 
-    <div class="buttons">
+        <div class="buttons">
         <button data-number="1">1</button>
         <button data-number="2">2</button>
         <button data-number="3">3</button>
@@ -34,10 +35,15 @@
         <button id="equals">=</button>
         <button data-operator="/">/</button>
 
-        <!-- Nowy przycisk BACKSPACE -->
         <button id="backspace">⌫</button>
+        <button data-action="history">H</button>
+        </div>
     </div>
-</div>
+    <div id="history-panel" class="history hidden">
+        <h3>Historia</h3>
+        <ul id="history-list"></ul>
+    </div>
+    </div>
 </div>
 <div id="welcome" style="display: none;">
     <h1>Witaj</h1>
