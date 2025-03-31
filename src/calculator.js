@@ -1,4 +1,5 @@
 export let currentInput = '';
+export const history = [];
 export let operator = '';
 export let previousInput = '';
 
@@ -39,10 +40,14 @@ export function calculate() {
             break;
     }
 
+    // ZAPISZ DO HISTORII przed wyczyszczeniem danych
+    history.push(`${previousInput} ${operator} ${currentInput} = ${result}`);
+
     currentInput = result.toString();
     operator = '';
     previousInput = '';
 }
+
 
 export function clear() {
     currentInput = '';

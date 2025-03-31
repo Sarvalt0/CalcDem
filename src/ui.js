@@ -7,6 +7,7 @@ import {
     backspace,
     getCurrentInput
 } from './calculator.js';
+import { history } from './calculator.js';
 
 function updateDisplay() {
     document.getElementById('display').value = getCurrentInput();
@@ -21,7 +22,7 @@ document.querySelectorAll('[data-number]').forEach(btn =>
 
 document.querySelectorAll('[data-operator]').forEach(btn =>
     btn.addEventListener('click', () => {
-        window._opPressed = true; // ⬅️ ustawiamy flagę
+        window._opPressed = true;
         setOperation(btn.textContent);
         updateDisplay();
     })
@@ -36,6 +37,7 @@ document.getElementById('equals').addEventListener('click', () => {
         return;
     }
     updateDisplay();
+    updateHistoryPanel();
 });
 
 document.getElementById('clear').addEventListener('click', () => {
@@ -65,8 +67,15 @@ document.getElementById('backspace').addEventListener('click', () => {
     backspace();
     updateDisplay();
 });
+document.querySelector('[data-action="history"]').addEventListener('click', () => {
+    toggleHistoryPanel();
+});
 const chatText = document.getElementById('chat-text');
 const sendBtn = document.getElementById('send-btn');
+function toggleHistoryPanel() {
+    const panel = document.getElementById('history-panel');
+    panel.classList.toggle('hidden');
+}
 const chatMessages = document.getElementById('chat-messages');
 
 sendBtn.addEventListener('click', () => {
@@ -80,3 +89,13 @@ sendBtn.addEventListener('click', () => {
         chatMessages.scrollTop = chatMessages.scrollHeight;
     }
 });
+function updateHistoryPanel() {
+    const list = document.getElementById('history-list');
+    list.innerHTML = ''; // Czyścimy starą zawartość
+
+    history.slice().reverse().forEach(entry => {
+        const li = document.createElement('li');
+        li.textContent = entry;
+        list.appendChild(li);
+    });
+}
