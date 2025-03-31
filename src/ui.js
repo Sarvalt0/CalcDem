@@ -5,9 +5,10 @@ import {
     calculate,
     clear,
     backspace,
-    getCurrentInput
+    getCurrentInput,
+    history
 } from './calculator.js';
-import { history } from './calculator.js';
+
 
 function updateDisplay() {
     document.getElementById('display').value = getCurrentInput();
