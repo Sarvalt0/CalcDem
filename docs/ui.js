@@ -9,100 +9,109 @@ import {
     history
 } from './calculator.js';
 
+// DOM Elements
+const elements = {
+    display: document.getElementById('display'),
+    calculator: document.querySelector('.calculator'),
+    welcome: document.getElementById('welcome'),
+    chatContainer: document.getElementById('chat-container'),
+    chatMessages: document.getElementById('chat-messages'),
+    chatText: document.getElementById('chat-text'),
+    sendBtn: document.getElementById('send-btn'),
+    historyPanel: document.getElementById('history-panel'),
+    historyList: document.getElementById('history-list'),
+    exportPdfBtn: document.getElementById('export-pdf')
+};
 
+// State
+const state = {
+    opPressed: false
+};
+
+// Display Functions
 function updateDisplay() {
-    document.getElementById('display').value = getCurrentInput();
+    elements.display.value = getCurrentInput();
 }
 
-document.querySelectorAll('[data-number]').forEach(btn =>
-    btn.addEventListener('click', () => {
-        appendNumber(btn.textContent);
-        updateDisplay();
-    })
-);
-
-document.querySelectorAll('[data-operator]').forEach(btn =>
-    btn.addEventListener('click', () => {
-        window._opPressed = true;
-        setOperation(btn.textContent);
-        updateDisplay();
-    })
-);
-
-
-document.getElementById('equals').addEventListener('click', () => {
-    try {
-        calculate();
-    } catch (e) {
-        document.getElementById('display').value = e.message;
-        return;
-    }
-    updateDisplay();
-    updateHistoryPanel();
-});
-
-document.getElementById('clear').addEventListener('click', () => {
-    if (getCurrentInput() === '666' && !window._opPressed) {
-        document.querySelector('.calculator').style.display = 'none';
-        document.getElementById('welcome').style.display = 'block';
-        document.getElementById('welcome').classList.add('zoom-in');
-
-        setTimeout(() => {
-            document.getElementById('welcome').style.top = '10%';
-            document.getElementById('welcome').style.transform = 'translateX(-50%)';
-            const chat = document.getElementById('chat-container');
-            chat.style.display = 'flex';
-            chat.classList.add('fade-in');
-
-        }, 5000);
-
-        return;
-    }
-
-    window._opPressed = false;
-    clear();
-    updateDisplay();
-});
-
-document.getElementById('backspace').addEventListener('click', () => {
-    backspace();
-    updateDisplay();
-});
-document.querySelector('[data-action="history"]').addEventListener('click', () => {
-    toggleHistoryPanel();
-});
-const chatText = document.getElementById('chat-text');
-const sendBtn = document.getElementById('send-btn');
-function toggleHistoryPanel() {
-    const panel = document.getElementById('history-panel');
-    panel.classList.toggle('hidden');
-}
-const chatMessages = document.getElementById('chat-messages');
-
-sendBtn.addEventListener('click', () => {
-    const msg = chatText.value.trim();
-    if (msg) {
-        const bubble = document.createElement('div');
-        bubble.classList.add('message');
-        bubble.innerText = msg;
-        chatMessages.appendChild(bubble);
-        chatText.value = '';
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-    }
-});
 function updateHistoryPanel() {
-    const list = document.getElementById('history-list');
-    list.innerHTML = ''; // Czyścimy starą zawartość
-
+    elements.historyList.innerHTML = '';
     history.slice().reverse().forEach(entry => {
         const li = document.createElement('li');
         li.textContent = entry;
-        list.appendChild(li);
+        elements.historyList.appendChild(li);
     });
 }
 
-document.getElementById('export-pdf').addEventListener('click', exportToPDF);
+function toggleHistoryPanel() {
+    elements.historyPanel.classList.toggle('hidden');
+}
 
+// Calculator Event Handlers
+function handleNumberClick(btn) {
+    appendNumber(btn.textContent);
+    updateDisplay();
+}
+
+function handleOperatorClick(btn) {
+    state.opPressed = true;
+    setOperation(btn.textContent);
+    updateDisplay();
+}
+
+function handleEqualsClick() {
+    try {
+        calculate();
+        updateDisplay();
+        updateHistoryPanel();
+    } catch (e) {
+        elements.display.value = e.message;
+    }
+}
+
+function handleClearClick() {
+    if (getCurrentInput() === '666' && !state.opPressed) {
+        showEasterEgg();
+        return;
+    }
+
+    state.opPressed = false;
+    clear();
+    updateDisplay();
+}
+
+function handleBackspaceClick() {
+    backspace();
+    updateDisplay();
+}
+
+// Easter Egg Function
+function showEasterEgg() {
+    elements.calculator.style.display = 'none';
+    elements.welcome.style.display = 'block';
+    elements.welcome.classList.add('zoom-in');
+
+    setTimeout(() => {
+        elements.welcome.style.top = '10%';
+        elements.welcome.style.transform = 'translateX(-50%)';
+        elements.chatContainer.style.display = 'flex';
+        elements.chatContainer.classList.add('fade-in');
+    }, 5000);
+}
+
+// Chat Functions
+function handleSendMessage() {
+    const msg = elements.chatText.value.trim();
+    if (!msg) return;
+
+    const bubble = document.createElement('div');
+    bubble.classList.add('message');
+    bubble.innerText = msg;
+    elements.chatMessages.appendChild(bubble);
+    elements.chatText.value = '';
+    elements.chatMessages.scrollTop = elements.chatMessages.scrollHeight;
+}
+
+// PDF Export
 function exportToPDF() {
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
@@ -113,7 +122,7 @@ function exportToPDF() {
 
     let yPosition = 20;
     history.forEach((entry, index) => {
-        if(yPosition > 280) {
+        if (yPosition > 280) {
             doc.addPage();
             yPosition = 10;
         }
@@ -123,3 +132,29 @@ function exportToPDF() {
 
     doc.save('historia-kalkulatora.pdf');
 }
+
+// Event Listeners
+function initializeEventListeners() {
+    // Calculator buttons
+    document.querySelectorAll('[data-number]').forEach(btn => {
+        btn.addEventListener('click', () => handleNumberClick(btn));
+    });
+
+    document.querySelectorAll('[data-operator]').forEach(btn => {
+        btn.addEventListener('click', () => handleOperatorClick(btn));
+    });
+
+    document.getElementById('equals').addEventListener('click', handleEqualsClick);
+    document.getElementById('clear').addEventListener('click', handleClearClick);
+    document.getElementById('backspace').addEventListener('click', handleBackspaceClick);
+    document.querySelector('[data-action="history"]').addEventListener('click', toggleHistoryPanel);
+
+    // Chat
+    elements.sendBtn.addEventListener('click', handleSendMessage);
+
+    // PDF Export
+    elements.exportPdfBtn.addEventListener('click', exportToPDF);
+}
+
+// Initialize the app
+initializeEventListeners();
