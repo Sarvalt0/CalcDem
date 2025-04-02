@@ -91,3 +91,22 @@ Panel historii domyślnie ukryty (.hidden)
 Naprawiono błąd z curr is not defined w calculate()
 
 Dodano meta viewport dla poprawnego działania mobilnego widoku
+
+## [1.3.2] - 2025-04-02
+
+### 🔄 Nowe funkcje
+- Dodano możliwość eksportu historii obliczeń do pliku PDF
+- Nowy przycisk **"Eksport do PDF"** w panelu historii
+- Eksportowany dokument zawiera numerowaną listę wszystkich operacji z sesji
+- Wykorzystanie biblioteki `jsPDF` do generowania PDF bez backendu
+
+### 👩‍💻 UI i interakcje
+- Zaktualizowany interfejs: nowy przycisk `#export-pdf` w stylu spójnym z kalkulatorem
+- Obsługa kliknięcia przycisku dodana w `ui.js` (funkcja `exportToPDF()`)
+
+### 🧪 Poprawki i detale
+- Domyślny widok historii nadal ukryty, eksport działa tylko na aktualne działania
+- Drobna poprawka przewijania wiadomości w czacie (auto-scroll do dołu)
+
+### 📱 Responsywność
+- Zachowany pełny wygląd PDF także na urządzeniach mobilnych (dzięki formatowi A4)
