@@ -100,3 +100,26 @@ function updateHistoryPanel() {
         list.appendChild(li);
     });
 }
+
+document.getElementById('export-pdf').addEventListener('click', exportToPDF);
+
+function exportToPDF() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    doc.setFontSize(16);
+    doc.text("Historia obliczeń", 10, 10);
+    doc.setFontSize(12);
+
+    let yPosition = 20;
+    history.forEach((entry, index) => {
+        if(yPosition > 280) {
+            doc.addPage();
+            yPosition = 10;
+        }
+        doc.text(`${index + 1}. ${entry}`, 10, yPosition);
+        yPosition += 10;
+    });
+
+    doc.save('historia-kalkulatora.pdf');
+}

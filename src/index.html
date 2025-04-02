@@ -6,6 +6,7 @@
     <title>CalcDemo</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
 <div class="wrapper">
@@ -39,12 +40,14 @@
         <button data-action="history">H</button>
         </div>
     </div>
-    <div id="history-panel" class="history hidden">
-        <h3>Historia</h3>
-        <ul id="history-list"></ul>
-    </div>
+        <div id="history-panel" class="history hidden">
+            <h3>Historia</h3>
+            <button id="export-pdf">Eksport do PDF</button>
+            <ul id="history-list"></ul>
+        </div>
     </div>
 </div>
+
 <div id="welcome" style="display: none;">
     <h1>Witaj</h1>
 </div>

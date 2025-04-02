@@ -66,3 +66,28 @@ Wszystkie istotne zmiany w tym projekcie będą dokumentowane w tym pliku.
 
 ### Styl
 - Motyw cyberpunkowy: Orbitron, neonowe cienie, ciemne tło
+
+## [1.3.1] - 2025-03-31
+
+### Dodane
+Przycisk H do kalkulatora – wyświetla historię obliczeń z aktualnej sesji
+
+Panel historii (#history-panel) dynamicznie pokazuje listę działań (a + b = wynik)
+
+Styl historii spójny z kalkulatorem: neonowe obramowanie, czarne tło, monospaced font
+
+Obsługa zdarzeń w czystym JavaScript – bez użycia zewnętrznych bibliotek
+
+### Responsywność
+Na desktopie: historia pojawia się z prawej strony kalkulatora
+
+Na mobilu: historia automatycznie przesuwa się pod kalkulator
+
+Media queries (@media) zapewniają układ kolumnowy na wąskich ekranach
+
+### Poprawki
+Panel historii domyślnie ukryty (.hidden)
+
+Naprawiono błąd z curr is not defined w calculate()
+
+Dodano meta viewport dla poprawnego działania mobilnego widoku
