@@ -158,3 +158,40 @@ function initializeEventListeners() {
 
 // Initialize the app
 initializeEventListeners();
+
+// Obsługa klawiatury
+document.addEventListener('keydown', (event) => {
+    const key = event.key;
+
+    // Cyfry
+    if (!isNaN(key)) {
+        appendNumber(key);
+        updateDisplay();
+    }
+
+    // Operatory
+    if (['+', '-', '*', '/'].includes(key)) {
+        setOperation(key);
+        updateDisplay();
+    }
+
+    // Enter lub =
+    if (key === 'Enter' || key === '=') {
+        handleEqualsClick();
+    }
+
+    // Backspace
+    if (key === 'Backspace') {
+        handleBackspaceClick();
+    }
+
+    // Escape jako clear
+    if (key === 'Escape') {
+        handleClearClick();
+    }
+
+    // H jako historia
+    if (key.toLowerCase() === 'h') {
+        toggleHistoryPanel();
+    }
+});

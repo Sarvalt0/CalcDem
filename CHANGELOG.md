@@ -110,3 +110,21 @@ Dodano meta viewport dla poprawnego działania mobilnego widoku
 
 ### 📱 Responsywność
 - Zachowany pełny wygląd PDF także na urządzeniach mobilnych (dzięki formatowi A4)
+
+## [1.3.3] - 2025-04-03
+
+### 🧠 Nowa funkcja: obsługa klawiatury
+
+- Możliwość wpisywania cyfr i operatorów bez użycia myszki
+- Obsługiwane klawisze:
+  - **0–9** – wprowadzenie cyfr
+  - **+ - * /** – wybór operatora
+  - **Enter** lub **=** – wykonanie działania
+  - **Backspace** – usuwa ostatni znak
+  - **Escape** – czyści aktualne działanie (jak `C`)
+  - **H** – pokazuje/ukrywa panel historii
+
+### ⚙️ Zmiany w kodzie
+- Dodano nasłuchiwacz `keydown` do `ui.js`
+- Użyto istniejących funkcji (`appendNumber`, `setOperation`, `calculate`, `backspace`, `clear`, `toggleHistoryPanel`)
+- Zachowano pełną kompatybilność z obsługą kliknięć
