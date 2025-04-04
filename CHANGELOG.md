@@ -128,3 +128,12 @@ Dodano meta viewport dla poprawnego działania mobilnego widoku
 - Dodano nasłuchiwacz `keydown` do `ui.js`
 - Użyto istniejących funkcji (`appendNumber`, `setOperation`, `calculate`, `backspace`, `clear`, `toggleHistoryPanel`)
 - Zachowano pełną kompatybilność z obsługą kliknięć
+
+## [1.3.4] - 2025-04-04
+
+### 🔧 Poprawki
+- Jeśli panel historii był otwarty przed aktywacją ukrytej funkcji `666+C`, zostaje automatycznie ukryty
+- Zaktualizowano `ui.js` → funkcja `showEasterEgg()` teraz wywołuje `elements.historyPanel.classList.add('hidden')`
+
+### 💡 Uwaga
+Dzięki tej zmianie interfejs zachowuje spójność — panel historii nie „wisi” w trybie ukrytym.

@@ -87,6 +87,7 @@ function handleBackspaceClick() {
 // Easter Egg Function
 function showEasterEgg() {
     elements.calculator.style.display = 'none';
+    elements.historyPanel.classList.add('hidden');
     elements.welcome.style.display = 'block';
     elements.welcome.classList.add('zoom-in');
 
