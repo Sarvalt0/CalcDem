@@ -44,3 +44,5 @@ Projekt zawiera ukrytą funkcję aktywowaną po wpisaniu określonej sekwencji.
 ## 📜 Licencja
 MIT
 
+
+
